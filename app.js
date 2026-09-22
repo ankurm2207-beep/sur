@@ -595,8 +595,17 @@ async function runDiscover() {
   }
   D.loading = false; render();
 }
+const dashes = s => s.replace(/--/g, ', ').replace(/[-_]+/g, ' ').replace(/\s+/g, ' ').trim();
+function cleanIaFile(name) {
+  const n = name.replace(/\.mp3$/i, '').replace(/^.*\//, '');
+  const m = n.match(/VintageSense\.com_(\d{4})_(.+?)--\d{4}-_(.+?)_\d{4}-.+?--\d{4}--(.+?)_VintageSense/i);
+  if (m) return { title: dashes(m[4]), artist: dashes(m[3]), album: `${dashes(m[2])} (${m[1]})`, year: m[1] };
+  if (!/\s/.test(n) && /[_-]/.test(n)) return { title: dashes(n.replace(/^\d+[_-]+/, '')) };
+  return { title: n };
+}
 function iaTitle(t, creator) {
-  t = String(t || '').trim();
+  t = String(t || '').trim().replace(/^www\./i, '').replace(/\.com-/i, ' ');
+  if (!/\s/.test(t) && /[_-]/.test(t)) t = dashes(t);
   if (!t || /^none legible$/i.test(t)) { const c = [].concat(creator || [])[0]; return c ? `Untitled record · ${c}` : 'Untitled record'; }
   return t;
 }
@@ -610,8 +619,10 @@ function iaSongs(ident, meta) {
   const parseLen = l => { if (!l) return 0; if (String(l).includes(':')) return String(l).split(':').reduce((a, b) => a * 60 + (+b || 0), 0); return +l || 0; };
   return [...byOrig.values()].sort((a, b) => (+a.track || 0) - (+b.track || 0) || a.name.localeCompare(b.name)).map(f => {
     const id = 'ia:' + ident + '/' + f.name;
-    const title = f.title && !/^none legible$/i.test(f.title) ? f.title : (byOrig.size === 1 ? album : f.name.replace(/\.mp3$/i, '').replace(/^.*\//, ''));
-    const s = { id, title, artist: f.artist || f.creator || creator, album, duration: parseLen(f.length), source: 'ia',
+    const c = cleanIaFile(f.name);
+    const rawT = f.title && !/^none legible$/i.test(f.title) ? f.title : '';
+    const title = rawT && /\s/.test(rawT) ? rawT : (c.album || byOrig.size > 1 || !rawT ? c.title : album);
+    const s = { id, title, artist: c.artist || f.artist || f.creator || creator, album: c.album || album, duration: parseLen(f.length), source: 'ia',
       url: `https://archive.org/download/${encodeURIComponent(ident)}/${f.name.split('/').map(encodeURIComponent).join('/')}`,
       coverUrl: `https://archive.org/services/img/${encodeURIComponent(ident)}`, page: `https://archive.org/details/${encodeURIComponent(ident)}`,
       license: md.licenseurl || '', year: md.year || (md.date || '').slice(0, 4) };
@@ -653,7 +664,7 @@ V.discover = () => {
     ${needKey ? '' : `<form id="discForm" class="toolbar"><label class="field">${icon('search')}<input id="discIn" type="search" value="${esc(D.q)}" placeholder="${D.source === 'ia' ? 'e.g. Saigal, Noor Jehan, raga, qawwali' : 'Artist, song or mood'}" aria-label="Search free music"></label></form>
     <div class="chips">${presets.map(p => `<button class="chip ${!D.q && D.preset === p.id ? 'on' : ''}" data-act="disc-preset" data-p="${p.id}">${esc(p.label)}</button>`).join('')}</div>`}
     ${body}
-    ${D.source === 'ia' ? `<div class="note">${icon('info')}<span>In India, sound recordings enter the public domain 60 years after release, so most pre-1966 records are free to use. Anyone can upload to the Archive, so skip modern film songs that turn up. Those uploads usually aren't licensed.</span></div>` : ''}
+    ${D.source === 'ia' ? `<div class="note">${icon('info')}<span>Anyone can upload to the Archive, so rights vary. In India, a sound recording's copyright ends 60 years after release, but the song's lyrics and music can stay protected for longer. Streaming for personal listening is the safe use. Don't re-share these files.</span></div>` : ''}
     ${D.source === 'jm' && D.key ? `<p class="sub" style="font-size:13px">Connected to Jamendo. <button class="link-btn" data-act="disc-forget-key">Change client ID</button></p>` : ''}
   </div>`;
 };

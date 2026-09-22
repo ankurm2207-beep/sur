@@ -1,6 +1,6 @@
 // Sur service worker: keeps the app shell available offline.
 // Songs you add live in IndexedDB, so they play offline without this cache.
-const CACHE = 'sur-v2';
+const CACHE = 'sur-v3';
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => {
