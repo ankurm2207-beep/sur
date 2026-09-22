@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sur</title>
+<meta name="description" content="Your own ad-free music player.">
+<meta name="theme-color" content="#121019" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F7F4EF" media="(prefers-color-scheme: light)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sur">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Rozha+One&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M12 3 2.5 10.6l1.2 1.6L5 11.2V20a1 1 0 0 0 1 1h4.5v-6h3v6H18a1 1 0 0 0 1-1v-8.8l1.3 1l1.2-1.6L12 3Zm5 16h-1.5v-6h-7v6H7v-9.3l5-3.9 5 3.9V19Z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><path d="M10.5 3a7.5 7.5 0 0 1 5.9 12.1l4.8 4.8-1.4 1.4-4.8-4.8A7.5 7.5 0 1 1 10.5 3Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z"/></symbol>
+  <symbol id="i-library" viewBox="0 0 24 24"><path d="M4 3h2v18H4V3Zm4 0h2v18H8V3Zm4.2 1.1 1.9-.6 6.3 17.1-1.9.7-6.3-17.2Z"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm4.5 3.5-2.6 6.4-6.4 2.6 2.6-6.4 6.4-2.6ZM12 10.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15a.8.8 0 0 0 1.2.7l12-7.5a.8.8 0 0 0 0-1.4l-12-7.5A.8.8 0 0 0 7 4.5Z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4Zm8 0h4v16h-4V4Z"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M5 5.2v13.6a.7.7 0 0 0 1.1.6L16 13v6h2V5h-2v6L6.1 4.6A.7.7 0 0 0 5 5.2Z"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M19 5.2v13.6a.7.7 0 0 1-1.1.6L8 13v6H6V5h2v6l9.9-6.4a.7.7 0 0 1 1.1.6Z"/></symbol>
+  <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M17 3l4 4-4 4V8h-2.1c-1.2 0-2.2.6-2.9 1.6l-4.6 6.6A5.4 5.4 0 0 1 3 18.5V16.5c1 0 1.9-.5 2.4-1.3l4.7-6.7A5.5 5.5 0 0 1 14.9 6H17V3ZM3 5.5c1.6 0 3.1.7 4.2 1.9L6 9.1a3.5 3.5 0 0 0-3-1.6v-2Zm9.9 9 1.2-1.7c.2.3.5.6.9.8.3.2.6.2.9.2H17v-3l4 4-4 4v-3h-2.1c-.8 0-1.4-.2-2-.6Z"/></symbol>
+  <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M17 1l4 4-4 4V6H7a2 2 0 0 0-2 2v3H3V8a4 4 0 0 1 4-4h10V1ZM7 23l-4-4 4-4v3h10a2 2 0 0 0 2-2v-3h2v3a4 4 0 0 1-4 4H7v3Z"/></symbol>
+  <symbol id="i-repeat1" viewBox="0 0 24 24"><path d="M17 1l4 4-4 4V6H7a2 2 0 0 0-2 2v3H3V8a4 4 0 0 1 4-4h10V1ZM7 23l-4-4 4-4v3h10a2 2 0 0 0 2-2v-3h2v3a4 4 0 0 1-4 4H7v3Zm4.2-13.6L13 9h1v6h-1.6v-4.1l-1.2.4v-1.9Z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5 10.7 19.3C5.9 15 3 12.3 3 8.9A4.8 4.8 0 0 1 7.9 4c1.6 0 3.1.8 4.1 2 1-1.2 2.5-2 4.1-2A4.8 4.8 0 0 1 21 8.9c0 3.4-2.9 6.1-7.7 10.4L12 20.5Zm-4.1-14.5A2.8 2.8 0 0 0 5 8.9c0 2.5 2.4 4.8 7 8.9 4.6-4.1 7-6.4 7-8.9A2.8 2.8 0 0 0 16.1 6c-1.2 0-2.3.7-2.8 1.8h-2.6A3.1 3.1 0 0 0 7.9 6Z"/></symbol>
+  <symbol id="i-heart-f" viewBox="0 0 24 24"><path d="M12 20.5 10.7 19.3C5.9 15 3 12.3 3 8.9A4.8 4.8 0 0 1 7.9 4c1.6 0 3.1.8 4.1 2 1-1.2 2.5-2 4.1-2A4.8 4.8 0 0 1 21 8.9c0 3.4-2.9 6.1-7.7 10.4L12 20.5Z"/></symbol>
+  <symbol id="i-queue" viewBox="0 0 24 24"><path d="M3 5h14v2H3V5Zm0 6h14v2H3v-2Zm0 6h8v2H3v-2Zm12 0 6-3.5v7L15 17Z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M11 4h2v7h7v2h-7v7h-2v-7H4v-2h7V4Z"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><path d="M5 10.2a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6Zm7 0a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6Zm7 0a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6Z"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M11 16V7.8L7.4 11.4 6 10l6-6 6 6-1.4 1.4L13 7.8V16h-2Zm-7 2h16v2H4v-2Z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M11 4h2v8.2l3.6-3.6L18 10l-6 6-6-6 1.4-1.4 3.6 3.6V4Zm-7 14h16v2H4v-2Z"/></symbol>
+  <symbol id="i-volume" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3V9Zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4ZM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6Z"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3V9Zm13.6.2L18 7.8l2 2 2-2 1.4 1.4-2 2 2 2-1.4 1.4-2-2-2 2-1.4-1.4 2-2-2-2Z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M9 3h6l1 2h4v2H4V5h4l1-2Zm-3 5h12l-1 13H7L6 8Zm2.2 2 .7 9h6.2l.7-9H8.2Z"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6.4 5 5.6 5.6L17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4-5.6-5.6L6.4 19 5 17.6l5.6-5.6L5 6.4 6.4 5Z"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m5.4 8 6.6 6.6L18.6 8 20 9.4l-8 8-8-8L5.4 8Z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-1 6h2v7h-2v-7Zm0-3h2v2h-2V7Z"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M9 4.5 20 2v13.5a3.5 3.5 0 1 1-2-3.2V6.5l-7 1.6v9.4A3.5 3.5 0 1 1 9 14.3V4.5Z"/></symbol>
+  <symbol id="i-next-up" viewBox="0 0 24 24"><path d="M3 6h12v2H3V6Zm0 5h12v2H3v-2Zm0 5h8v2H3v-2Zm14-2V9l5 4-5 4v-3h0Z"/></symbol>
+</svg>
+
+<div class="shell">
+  <div class="app">
+    <aside class="side" aria-label="Sidebar">
+      <div class="brand"><span class="logo" lang="hi">सुर</span><span class="word">Sur</span></div>
+      <nav class="nav" id="nav">
+        <button data-act="go" data-view="home"><svg class="i"><use href="#i-home"/></svg><span>Home</span></button>
+        <button data-act="go" data-view="search"><svg class="i"><use href="#i-search"/></svg><span>Search</span></button>
+        <button data-act="go" data-view="library"><svg class="i"><use href="#i-library"/></svg><span>Your library</span></button>
+        <button data-act="go" data-view="discover"><svg class="i"><use href="#i-compass"/></svg><span>Discover</span></button>
+      </nav>
+      <div class="side-sec">
+        <div class="side-h"><span>Playlists</span><button class="icon-btn" data-act="new-playlist" aria-label="New playlist"><svg class="i"><use href="#i-plus"/></svg></button></div>
+        <ul class="pl-list" id="plList"></ul>
+      </div>
+    </aside>
+
+    <main class="main" id="main" tabindex="-1"></main>
+
+    <aside class="queue" id="queue" hidden aria-label="Queue">
+      <div class="queue-h"><span class="h2">Queue</span><button class="icon-btn" data-act="toggle-queue" aria-label="Close queue"><svg class="i"><use href="#i-close"/></svg></button></div>
+      <div class="queue-body" id="queueBody"></div>
+    </aside>
+  </div>
+
+  <footer class="player" id="player" aria-label="Player">
+    <div class="p-now" data-act="open-sheet">
+      <div id="pArt"></div>
+      <div class="p-txt"><span class="row-t" id="pTitle">Nothing playing</span><span class="row-a" id="pArtist">Pick a song to start</span></div>
+      <button class="icon-btn like" id="pLike" data-act="like-current" aria-label="Like"><svg class="i"><use href="#i-heart"/></svg></button>
+    </div>
+    <div class="p-center">
+      <div class="p-ctrls">
+        <button class="icon-btn" id="pShuffle" data-act="shuffle" aria-label="Shuffle"><svg class="i"><use href="#i-shuffle"/></svg></button>
+        <button class="icon-btn" data-act="prev" aria-label="Previous"><svg class="i"><use href="#i-prev"/></svg></button>
+        <button class="p-play" id="pPlay" data-act="toggle" aria-label="Play"><svg class="i"><use href="#i-play"/></svg></button>
+        <button class="icon-btn" data-act="next" aria-label="Next"><svg class="i"><use href="#i-next"/></svg></button>
+        <button class="icon-btn" id="pRepeat" data-act="repeat" aria-label="Repeat"><svg class="i"><use href="#i-repeat"/></svg></button>
+      </div>
+      <div class="p-seek"><span id="pCur">0:00</span><input type="range" class="rng" id="pSeek" min="0" max="1000" value="0" aria-label="Seek"><span id="pDur">0:00</span></div>
+    </div>
+    <div class="p-right">
+      <button class="icon-btn" id="pQueueBtn" data-act="toggle-queue" aria-label="Queue"><svg class="i"><use href="#i-queue"/></svg></button>
+      <button class="icon-btn" id="pMute" data-act="mute" aria-label="Mute"><svg class="i"><use href="#i-volume"/></svg></button>
+      <input type="range" class="rng vol" id="pVol" min="0" max="100" value="80" aria-label="Volume">
+    </div>
+    <button class="p-play p-mini-play" id="pMiniPlay" data-act="toggle" aria-label="Play"><svg class="i"><use href="#i-play"/></svg></button>
+    <div class="p-mini-bar"><i id="pMiniBar"></i></div>
+  </footer>
+
+  <nav class="tabbar" id="tabbar" aria-label="Main">
+    <button data-act="go" data-view="home"><svg class="i"><use href="#i-home"/></svg>Home</button>
+    <button data-act="go" data-view="search"><svg class="i"><use href="#i-search"/></svg>Search</button>
+    <button data-act="go" data-view="library"><svg class="i"><use href="#i-library"/></svg>Library</button>
+    <button data-act="go" data-view="discover"><svg class="i"><use href="#i-compass"/></svg>Discover</button>
+  </nav>
+</div>
+
+<section class="sheet" id="sheet" hidden aria-label="Now playing">
+  <div class="sheet-top">
+    <button class="icon-btn" data-act="close-sheet" aria-label="Close"><svg class="i"><use href="#i-down"/></svg></button>
+    <span class="eyebrow">Now playing</span>
+    <button class="icon-btn" data-act="toggle-queue" aria-label="Queue"><svg class="i"><use href="#i-queue"/></svg></button>
+  </div>
+  <div id="sArt"></div>
+  <div class="sheet-info">
+    <div class="p-txt"><span class="row-t" id="sTitle"></span><span class="row-a" id="sArtist"></span></div>
+    <button class="icon-btn like" id="sLike" data-act="like-current" aria-label="Like"><svg class="i"><use href="#i-heart"/></svg></button>
+  </div>
+  <div class="p-seek"><span id="sCur">0:00</span><input type="range" class="rng" id="sSeek" min="0" max="1000" value="0" aria-label="Seek"><span id="sDur">0:00</span></div>
+  <div class="p-ctrls">
+    <button class="icon-btn" id="sShuffle" data-act="shuffle" aria-label="Shuffle"><svg class="i"><use href="#i-shuffle"/></svg></button>
+    <button class="icon-btn" data-act="prev" aria-label="Previous"><svg class="i"><use href="#i-prev"/></svg></button>
+    <button class="p-play" id="sPlay" data-act="toggle" aria-label="Play"><svg class="i"><use href="#i-play"/></svg></button>
+    <button class="icon-btn" data-act="next" aria-label="Next"><svg class="i"><use href="#i-next"/></svg></button>
+    <button class="icon-btn" id="sRepeat" data-act="repeat" aria-label="Repeat"><svg class="i"><use href="#i-repeat"/></svg></button>
+  </div>
+</section>
+
+<div id="menuHost"></div>
+<div id="modalHost"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="drop" id="drop" hidden><div>Drop songs to add them to your library</div></div>
+<input type="file" id="fileIn" accept="audio/*,.mp3,.m4a,.aac,.flac,.ogg,.opus,.wav" multiple hidden>
+<audio id="audio" preload="metadata"></audio>
+
+<script src="app.js"></script>
+</body>
+</html>
