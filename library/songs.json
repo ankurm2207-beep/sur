@@ -1,0 +1,115 @@
+{
+ "note": "Songs stream from Pixabay (Pixabay Content License). No audio files are stored in this repo.",
+ "songs": [
+  {
+   "file": "https://cdn.pixabay.com/download/audio/2026/09/05/audio_a09d73f273.mp3?filename=kiravale-indian-classical-music-598117.mp3",
+   "title": "Indian Classical Music",
+   "artist": "kiravale",
+   "album": "Pixabay Music",
+   "duration": 216,
+   "cover": "https://cdn.pixabay.com/audio/2026/09/05/18-21-17-586_200x200.jpg",
+   "via": "Pixabay",
+   "page": "https://pixabay.com/music/india-indian-classical-music-598117/",
+   "addedAt": 1790111560059
+  },
+  {
+   "file": "https://cdn.pixabay.com/download/audio/2025/11/20/audio_4ab6954810.mp3?filename=leberch-indian-440089.mp3",
+   "title": "Indian",
+   "artist": "leberch",
+   "album": "Pixabay Music",
+   "duration": 119,
+   "cover": "https://cdn.pixabay.com/audio/2025/11/24/07-53-01-886_200x200.jpg",
+   "via": "Pixabay",
+   "page": "https://pixabay.com/music/india-indian-440089/",
+   "addedAt": 1790111559059
+  },
+  {
+   "file": "https://cdn.pixabay.com/download/audio/2026/08/14/audio_adb763104d.mp3?filename=maksymmalko-indian-indian-music-585642.mp3",
+   "title": "Indian - Indian Music",
+   "artist": "MaksymMalko",
+   "album": "Pixabay Music",
+   "duration": 130,
+   "cover": "https://cdn.pixabay.com/audio/2026/08/14/11-32-25-166_200x200.png",
+   "via": "Pixabay",
+   "page": "https://pixabay.com/music/india-indian-indian-music-585642/",
+   "addedAt": 1790111558059
+  },
+  {
+   "file": "https://cdn.pixabay.com/download/audio/2025/11/10/audio_4a73377c2f.mp3?filename=nastelbom-indian-434482.mp3",
+   "title": "Indian",
+   "artist": "NastelBom",
+   "album": "Pixabay Music",
+   "duration": 98,
+   "cover": "https://cdn.pixabay.com/audio/2025/11/10/23-17-50-928_200x200.jpg",
+   "via": "Pixabay",
+   "page": "https://pixabay.com/music/india-indian-434482/",
+   "addedAt": 1790111557059
+  },
+  {
+   "file": "https://cdn.pixabay.com/download/audio/2026/07/31/audio_ccd8ec23b4.mp3?filename=maksymmalko-indian-indian-music-577514.mp3",
+   "title": "Indian - Indian Music",
+   "artist": "MaksymMalko",
+   "album": "Pixabay Music",
+   "duration": 138,
+   "cover": "https://cdn.pixabay.com/audio/2026/07/31/12-39-40-13_200x200.png",
+   "via": "Pixabay",
+   "page": "https://pixabay.com/music/india-indian-indian-music-577514/",
+   "addedAt": 1790111556059
+  },
+  {
+   "file": "https://cdn.pixabay.com/download/audio/2026/07/29/audio_ebce665783.mp3?filename=apalonbeats-indian-576333.mp3",
+   "title": "Indian",
+   "artist": "APALONBeats",
+   "album": "Pixabay Music",
+   "duration": 92,
+   "cover": "https://cdn.pixabay.com/audio/2026/07/29/14-50-09-829_200x200.jpg",
+   "via": "Pixabay",
+   "page": "https://pixabay.com/music/india-indian-576333/",
+   "addedAt": 1790111555059
+  },
+  {
+   "file": "https://cdn.pixabay.com/download/audio/2025/02/02/audio_3f451df852.mp3?filename=kulakovka-indian-295889.mp3",
+   "title": "Indian",
+   "artist": "Kulakovka",
+   "album": "Pixabay Music",
+   "duration": 117,
+   "cover": "https://cdn.pixabay.com/audio/2025/02/02/05-37-31-637_200x200.jpg",
+   "via": "Pixabay",
+   "page": "https://pixabay.com/music/india-indian-295889/",
+   "addedAt": 1790111554059
+  },
+  {
+   "file": "https://cdn.pixabay.com/download/audio/2026/04/18/audio_406970c878.mp3?filename=freemusicforvideo-indian-flute-515569.mp3",
+   "title": "Indian Flute",
+   "artist": "FreeMusicForVideo",
+   "album": "Pixabay Music",
+   "duration": 193,
+   "cover": "https://cdn.pixabay.com/audio/2026/04/07/10-07-31-856_200x200.png",
+   "via": "Pixabay",
+   "page": "https://pixabay.com/music/india-indian-flute-515569/",
+   "addedAt": 1790111553059
+  },
+  {
+   "file": "https://cdn.pixabay.com/download/audio/2026/06/09/audio_6908e2c732.mp3?filename=alex-morgan-bollywood-indian-hindi-song-music-545539.mp3",
+   "title": "Bollywood Indian Hindi Song Music",
+   "artist": "alex-morgan",
+   "album": "Pixabay Music",
+   "duration": 221,
+   "cover": "https://cdn.pixabay.com/audio/2026/06/01/20-53-46-195_200x200.jpg",
+   "via": "Pixabay",
+   "page": "https://pixabay.com/music/india-bollywood-indian-hindi-song-music-545539/",
+   "addedAt": 1790111552059
+  },
+  {
+   "file": "https://cdn.pixabay.com/download/audio/2026/08/20/audio_734dade34f.mp3?filename=mondamusic-indian-hindi-589132.mp3",
+   "title": "Indian Hindi",
+   "artist": "MondaMusic",
+   "album": "Pixabay Music",
+   "duration": 96,
+   "cover": "https://cdn.pixabay.com/audio/2026/08/20/09-13-37-103_200x200.jpg",
+   "via": "Pixabay",
+   "page": "https://pixabay.com/music/india-indian-hindi-589132/",
+   "addedAt": 1790111551059
+  }
+ ]
+}
