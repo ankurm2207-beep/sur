@@ -427,7 +427,7 @@ function sortedLibrary(filter = 'all') {
       : (a, b) => (b.addedAt || 0) - (a.addedAt || 0));
   return arr.map(s => s.id);
 }
-const srcPill = s => s.source === 'ia' ? '<span class="pill src">Archive</span>' : s.source === 'jamendo' ? '<span class="pill src">Jamendo</span>' : s.source === 'server' ? '<span class="pill src">Server</span>' : '';
+const srcPill = s => s.source === 'ia' ? '<span class="pill src">Archive</span>' : s.source === 'jamendo' ? '<span class="pill src">Jamendo</span>' : s.source === 'server' ? `<span class="pill src">${esc(s.via || 'Server')}</span>` : '';
 function listHTML(key, ids, { header = true, limit } = {}) {
   S.lists[key] = ids;
   const cur = S.queue[S.qi];
@@ -842,8 +842,13 @@ async function loadServerLibrary() {
     for (const it of (j.songs || [])) {
       if (!it.file) continue;
       const id = 'srv:' + it.file;
-      S.songs.set(id, { id, title: it.title || it.file.replace(/\.[^.]+$/, ''), artist: it.artist || '', album: it.album || '', duration: +it.duration || 0,
-        source: 'server', url: 'library/' + it.file.split('/').map(encodeURIComponent).join('/'), coverUrl: it.cover ? 'library/' + it.cover : '', addedAt: +it.addedAt || 0 });
+      const abs = u => /^https?:\/\//i.test(u);
+      const local = u => 'library/' + u.split('/').map(encodeURIComponent).join('/');
+      const prevSong = S.songs.get(id); // kept in IndexedDB if saved for offline
+      const song = { id, title: it.title || it.file.replace(/[?#].*$/, '').replace(/^.*\//, '').replace(/\.[^.]+$/, ''), artist: it.artist || '', album: it.album || '', duration: +it.duration || 0,
+        source: 'server', via: it.via || '', page: it.page || '', url: abs(it.file) ? it.file : local(it.file),
+        coverUrl: it.cover ? (abs(it.cover) ? it.cover : local(it.cover)) : '', addedAt: +it.addedAt || 0, hasBlob: !!prevSong?.hasBlob };
+      S.songs.set(id, song);
     }
   } catch { /* no server library */ }
 }
